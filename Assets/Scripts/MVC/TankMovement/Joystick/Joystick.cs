@@ -20,7 +20,6 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         {
             positionInput.x = positionInput.x / (joystick_bg.rectTransform.sizeDelta.x);
             positionInput.y = positionInput.y / (joystick_bg.rectTransform.sizeDelta.y);
-            Debug.Log(positionInput.x.ToString() + " / " + positionInput.y.ToString());
 
             // Normalize 
             if (positionInput.magnitude > 1.0f)
