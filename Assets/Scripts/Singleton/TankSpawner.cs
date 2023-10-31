@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-public class TankSpawner : MonoBehaviour
+public class TankSpawner : GenericSingleton<TankSpawner>
 {
     [SerializeField] private TankView tankView;
     [SerializeField] private float moveSpeed;
@@ -9,6 +9,11 @@ public class TankSpawner : MonoBehaviour
     [SerializeField] private Joystick joystick;
     [SerializeField] private CinemachineVirtualCamera cam;
     private TankController tankController;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     private void Start()
     {
