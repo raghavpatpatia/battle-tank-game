@@ -1,4 +1,3 @@
-using Cinemachine;
 using UnityEngine;
 
 public class TankController
@@ -7,25 +6,21 @@ public class TankController
     private TankView tankView;
     private Rigidbody rb;
     private Joystick joystick;
-    private CinemachineVirtualCamera cam;
+    private FollowPlayerScript followPlayer;
 
-    public TankController(TankView view, float movementSpeed, float rotationSpeed, Joystick joystick, CinemachineVirtualCamera cam)
+    public TankController(TankView view, TankModel model, Joystick joystick, FollowPlayerScript followPlayer)
     {
-        tankModel = new TankModel(movementSpeed, rotationSpeed);
+        tankModel = model;
 
         tankView = GameObject.Instantiate<TankView>(view);
         tankView.SetTankController(this);
 
+        this.followPlayer = followPlayer;
+        this.followPlayer.FollowPlayer(tankView);
+
         rb = tankView.GetRigidbody();
 
         this.joystick = joystick;
-        this.cam = cam;
-    }
-
-    public void FollowPlayer(TankView view)
-    {
-        cam.Follow = view.transform;
-        cam.LookAt = view.transform;
     }
 
     public void PlayerMovement()

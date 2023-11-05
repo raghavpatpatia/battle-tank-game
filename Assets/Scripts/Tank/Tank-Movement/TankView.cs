@@ -1,14 +1,10 @@
 using UnityEngine;
+using Cinemachine;
 
 public class TankView : MonoBehaviour
 {
     private TankController tankController;
     [SerializeField] private Rigidbody rb;
-
-    private void Start()
-    {
-        CameraFollow();
-    }
 
     private void Update()
     {
@@ -18,11 +14,6 @@ public class TankView : MonoBehaviour
     private void TankMovement()
     {
         tankController.PlayerMovement();
-    }
-
-    private void CameraFollow()
-    {
-        tankController.FollowPlayer(this);
     }
 
     public void SetTankController(TankController controller)

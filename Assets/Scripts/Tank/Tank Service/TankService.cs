@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-public class TankSpawner : GenericSingleton<TankSpawner>
+public class TankService : GenericSingleton<TankService>
 {
     [SerializeField] private TankView tankView;
     [SerializeField] private float moveSpeed;
@@ -9,6 +9,8 @@ public class TankSpawner : GenericSingleton<TankSpawner>
     [SerializeField] private Joystick joystick;
     [SerializeField] private CinemachineVirtualCamera cam;
     private TankController tankController;
+    private TankModel tankModel;
+    private FollowPlayerScript followPlayer;
 
     protected override void Awake()
     {
@@ -17,6 +19,8 @@ public class TankSpawner : GenericSingleton<TankSpawner>
 
     private void Start()
     {
-        tankController = new TankController(tankView, moveSpeed, rotationSpeed, joystick, cam);
+        tankModel = new TankModel(moveSpeed, rotationSpeed);
+        followPlayer = new FollowPlayerScript(cam);
+        tankController = new TankController(tankView, tankModel, joystick, followPlayer);
     }
 }
