@@ -18,4 +18,9 @@ public class BulletService : GenericSingleton<BulletService>
     {
         return bulletController.GetBulletDamage();
     }
+
+    public void DestroyBullet()
+    {
+        bulletController.DestroyBulletOnCollision();
+    }
 }

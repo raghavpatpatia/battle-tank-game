@@ -16,6 +16,6 @@ MonoBehaviour:
   maxRotation: 360
   health: 100
   tankType: 1
-  bulletType: 1
+  bulletType: 2
   tankView: {fileID: 1910266860361482849, guid: 06eebbf429bdfa64fb293cb109d956b3,
     type: 3}

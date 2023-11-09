@@ -4,7 +4,10 @@ public class BulletController
 {
     public BulletModel bulletModel { get; private set; }
     public BulletView bulletView { get; private set; }
-    private Rigidbody rb;
+    public Rigidbody rb { get; private set; }
+
+    private BulletMovement bulletMovement;
+    private BulletCollisions bulletCollisions;
 
     public BulletController(BulletScriptableObject bullet, Transform transform)
     {
@@ -12,22 +15,23 @@ public class BulletController
         this.bulletModel = new BulletModel(bullet);
         this.bulletView.SetBulletController(this);
         this.bulletModel.SetBulletController(this);
+        this.bulletMovement = new BulletMovement(this);
+        this.bulletCollisions = new BulletCollisions(this);
 
         rb = this.bulletView.GetRigidbody();
     }
-
     public void MoveBullet()
     {
-        if (rb != null)
-        {
-            rb.AddForce(rb.transform.forward * bulletModel.range, ForceMode.Impulse);
-        }
+        bulletMovement.MoveBullet();
     }
     public void DestroyBulletOnCollision()
     {
-        GameObject.Destroy(bulletView.gameObject);
+        bulletCollisions.DestroyBulletOnCollision();
     }
-
+    public void GroundCollisionCheck(Collision collision)
+    {
+        bulletCollisions.GroundCollisionCheck(collision);
+    }
     public int GetBulletDamage()
     {
         return bulletModel.damage;

@@ -16,8 +16,9 @@ public class BulletView : MonoBehaviour
     {
         bulletController.MoveBullet();
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        bulletController.DestroyBulletOnCollision();
+        bulletController.GroundCollisionCheck(collision);
     }
 }
