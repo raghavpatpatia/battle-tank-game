@@ -3,7 +3,7 @@
 public class BulletService : GenericSingleton<BulletService>
 {
     [SerializeField] private BulletScriptableObjectList bulletList;
-    public BulletController bulletController { get; private set; }
+    private BulletController bulletController;
 
     protected override void Awake()
     {
@@ -12,5 +12,10 @@ public class BulletService : GenericSingleton<BulletService>
     public void FireBullet(BulletType bulletType, Transform transform)
     {
         bulletController = new BulletController(bulletList.bulletList[(int)bulletType - 1], transform);
+    }
+
+    public int GetDamage()
+    {
+        return bulletController.GetBulletDamage();
     }
 }

@@ -11,6 +11,5 @@ public class BulletScriptableObject : ScriptableObject
 {
     public int range;
     public int damage;
-    public int bulletsPerShoot;
     public BulletView bulletView;
 }

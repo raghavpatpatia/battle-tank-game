@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankObject: {fileID: 11400000, guid: bceeb42b25bcda54a82d7fede9a72a26, type: 2}
   enemyTankObject: {fileID: 11400000, guid: 22f09437090835f4aad90d5f8c7f675a, type: 2}
-  enemyCount: 2
+  enemyCount: 5
   joystick: {fileID: 930939848}
   cam: {fileID: 907733706}
 --- !u!4 &112393841

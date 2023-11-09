@@ -18,10 +18,6 @@ public class BulletView : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        bulletController.HandleCollisions(collision);
-    }
-    public int GetBulleTDamage()
-    {
-        return bulletController.GetBulletDamage();
+        bulletController.DestroyBulletOnCollision();
     }
 }

@@ -18,10 +18,12 @@ public class BulletController
 
     public void MoveBullet()
     {
-        rb.AddForce(rb.transform.forward * bulletModel.range, ForceMode.Impulse);
+        if (rb != null)
+        {
+            rb.AddForce(rb.transform.forward * bulletModel.range, ForceMode.Impulse);
+        }
     }
-
-    public void HandleCollisions(Collision collision)
+    public void DestroyBulletOnCollision()
     {
         GameObject.Destroy(bulletView.gameObject);
     }

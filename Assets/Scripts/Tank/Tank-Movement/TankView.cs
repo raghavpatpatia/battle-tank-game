@@ -13,7 +13,7 @@ public class TankView : MonoBehaviour
 
     private void Update()
     {
-        if (tankController != null && tankController.tankModel.tankType == TankTypes.Player)
+        if (tankController != null && GetTankType() == TankTypes.Player)
         {
             TankMovement();
             if (Input.GetKeyDown(KeyCode.Space))

@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 1000
   damage: 15
-  bulletsPerShoot: 3
   bulletView: {fileID: -3604618980095496720, guid: aff7dacf8f5e46a438bbb446d4a6a4e1,
     type: 3}
