@@ -1,14 +1,22 @@
 using UnityEngine;
-using Cinemachine;
 
 public class TankView : MonoBehaviour
 {
     private TankController tankController;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] public Transform bulletSpawnPoint;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
-        TankMovement();
+        if (tankController != null && tankController.tankModel.tankType == TankTypes.Player)
+        {
+            TankMovement();
+        }
     }
 
     private void TankMovement()
@@ -24,5 +32,18 @@ public class TankView : MonoBehaviour
     public Rigidbody GetRigidbody()
     {
         return rb;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (tankController != null)
+        {
+            tankController.HandleCollisions(collision);
+        }
+    }
+
+    public TankTypes GetTankType()
+    {
+        return tankController != null ? tankController.tankModel.tankType : TankTypes.None;
     }
 }

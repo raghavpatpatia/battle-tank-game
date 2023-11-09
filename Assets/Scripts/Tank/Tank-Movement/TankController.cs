@@ -2,26 +2,41 @@ using UnityEngine;
 
 public class TankController
 {
-    private TankModel tankModel;
-    private TankView tankView;
+    public TankModel tankModel { get; private set; }
+    public TankView tankView { get; private set; }
+    private float health;
     private Rigidbody rb;
     private Joystick joystick;
     private FollowPlayerScript followPlayer;
 
-    public TankController(TankView view, TankModel model, Joystick joystick, FollowPlayerScript followPlayer)
+    public TankController(TankScriptableObject tank, Joystick joystick = null, FollowPlayerScript followPlayer = null, float randomX = 0, float randomZ = 0)
     {
-        tankModel = model;
+        tankModel = new TankModel(tank);
 
-        tankView = GameObject.Instantiate<TankView>(view);
+        if (tankModel.tankType == TankTypes.Player)
+        {
+            tankView = GameObject.Instantiate<TankView>(tank.tankView);
+            this.followPlayer = followPlayer;
+            this.followPlayer.FollowPlayer(tankView);
+        }
+        else
+        {
+            tankView = GameObject.Instantiate<TankView>(tank.tankView, new Vector3(Random.Range(-randomX, randomX), 0, Random.Range(-randomZ, randomZ)), Quaternion.identity);
+        }
+
         tankView.SetTankController(this);
-
-        this.followPlayer = followPlayer;
-        this.followPlayer.FollowPlayer(tankView);
+        tankModel.SetTankController(this);
 
         rb = tankView.GetRigidbody();
 
-        this.joystick = joystick;
+        if (joystick != null)
+        {
+            this.joystick = joystick;
+        }
+
+        health = tankModel.health;
     }
+
 
     public void PlayerMovement()
     {
@@ -38,6 +53,23 @@ public class TankController
             }
             tankView.transform.rotation = targetRotation;
         }
-    }    
+    } 
+    
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            GameObject.Destroy(tankView.gameObject);
+        }
+    }
+
+    public void HandleCollisions(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<BulletView>() && tankView.GetTankType() == TankTypes.Enemy)
+        {
+            TakeDamage(BulletService.Instance.bulletController.bulletModel.damage);
+        }
+    }
 
 }
