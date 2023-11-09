@@ -8,8 +8,8 @@ public class BulletController
 
     public BulletController(BulletScriptableObject bullet, Transform transform)
     {
-        this.bulletModel = new BulletModel(bullet);
         this.bulletView = GameObject.Instantiate<BulletView>(bullet.bulletView, transform.position, transform.rotation);
+        this.bulletModel = new BulletModel(bullet);
         this.bulletView.SetBulletController(this);
         this.bulletModel.SetBulletController(this);
 
@@ -18,12 +18,17 @@ public class BulletController
 
     public void MoveBullet()
     {
-        rb.AddForce(rb.transform.forward * bulletModel.range);
+        rb.AddForce(rb.transform.forward * bulletModel.range, ForceMode.Impulse);
     }
 
     public void HandleCollisions(Collision collision)
     {
         GameObject.Destroy(bulletView.gameObject);
+    }
+
+    public int GetBulletDamage()
+    {
+        return bulletModel.damage;
     }
 
 }

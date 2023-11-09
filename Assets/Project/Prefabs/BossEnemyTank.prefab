@@ -41,7 +41,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100112, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
       propertyPath: m_Name
-      value: EnemyTank 2
+      value: BossEnemyTank
       objectReference: {fileID: 0}
     - target: {fileID: 100112, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
       propertyPath: m_Layer
@@ -173,7 +173,7 @@ Rigidbody:
   m_GameObject: {fileID: 2980608836496099088}
   serializedVersion: 4
   m_Mass: 50
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

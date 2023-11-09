@@ -20,4 +20,8 @@ public class BulletView : MonoBehaviour
     {
         bulletController.HandleCollisions(collision);
     }
+    public int GetBulleTDamage()
+    {
+        return bulletController.GetBulletDamage();
+    }
 }

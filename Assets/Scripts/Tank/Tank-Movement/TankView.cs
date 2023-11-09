@@ -16,6 +16,10 @@ public class TankView : MonoBehaviour
         if (tankController != null && tankController.tankModel.tankType == TankTypes.Player)
         {
             TankMovement();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                tankController.Shoot(bulletSpawnPoint);
+            }
         }
     }
 

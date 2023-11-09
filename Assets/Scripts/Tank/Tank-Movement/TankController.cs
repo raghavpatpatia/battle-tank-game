@@ -68,8 +68,13 @@ public class TankController
     {
         if (collision.gameObject.GetComponent<BulletView>() && tankView.GetTankType() == TankTypes.Enemy)
         {
-            TakeDamage(BulletService.Instance.bulletController.bulletModel.damage);
+            TakeDamage(BulletService.Instance.bulletController.GetBulletDamage());
         }
+    }
+
+    public void Shoot(Transform bulletSpawnPoint)
+    {
+        TankService.Instance.Shoot(tankModel.bulletType, bulletSpawnPoint);
     }
 
 }

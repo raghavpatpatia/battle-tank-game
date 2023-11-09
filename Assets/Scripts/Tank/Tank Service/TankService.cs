@@ -37,11 +37,8 @@ public class TankService : GenericSingleton<TankService>
         tankController = new TankController(tank, null, null, 10, 2);
     }
 
-    public void Shoot()
+    public void Shoot(BulletType bulletType, Transform position)
     {
-        if (tankController != null)
-        {
-            BulletService.Instance.FireBullet(tankController.tankModel.bulletType, tankController.tankView.bulletSpawnPoint);
-        }
+        BulletService.Instance.FireBullet(bulletType, position);
     }
 }
