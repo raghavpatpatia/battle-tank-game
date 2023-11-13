@@ -11,7 +11,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: EnemyTankObjectList
-  m_EditorClassIdentifier: Assembly-CSharp::TankScriptableObjectList
-  tankList:
-  - {fileID: 11400000, guid: 7232f1ba0d8609f4cbef1455254573f1, type: 2}
-  - {fileID: 11400000, guid: e6774847bbf1b2140b6143c0e6838515, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTankScriptableObjectList
+  enemyTankList:
+  - {fileID: 11400000, guid: acffa32f5694b1d4c84127ae951f8992, type: 2}
+  - {fileID: 11400000, guid: 01b19097e594bd94f9b6da29d2fcf685, type: 2}
+  - {fileID: 11400000, guid: fd47055c845aca8478f55d84e851375c, type: 2}

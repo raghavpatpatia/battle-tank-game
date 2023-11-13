@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93e365767d1ef7243a1fbfa5f2828548, type: 3}
-  m_Name: PlayerTankObject
+  m_Script: {fileID: 11500000, guid: d73022a0af175e74bb6d4003fb343ec3, type: 3}
+  m_Name: DarkKnightTankObject
   m_EditorClassIdentifier: 
-  moveSpeed: 200
-  maxRotation: 360
-  health: 100
-  tankDamage: 15
-  bulletType: 2
-  tankType: 1
-  tankView: {fileID: 1910266860361482849, guid: 06eebbf429bdfa64fb293cb109d956b3,
+  moveSpeed: 80
+  tankDamage: 5
+  health: 80
+  enemyTankType: 3
+  bulletType: 1
+  tankType: 2
+  enemyTankView: {fileID: 2603541905093228600, guid: f5883795dc88a6f45add6ded24c9dc9f,
     type: 3}
