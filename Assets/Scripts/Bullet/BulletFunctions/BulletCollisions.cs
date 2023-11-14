@@ -18,9 +18,7 @@ public class BulletCollisions
 
     public void GroundCollisionCheck(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            GameObject.Destroy(bulletController.bulletView.gameObject);
-        }
+        GameObject.Destroy(bulletController.bulletView.gameObject);
+        ParticleSystems.Instance.PlayParticles(bulletController.bulletView.transform, Particles.BulletDestruction, 2);
     }
 }

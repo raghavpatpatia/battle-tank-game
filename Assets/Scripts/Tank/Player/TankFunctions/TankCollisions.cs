@@ -13,16 +13,16 @@ public class TankCollisions
         if (tankController.health <= 0)
         {
             GameObject.Destroy(tankController.tankView.gameObject);
+            ParticleSystems.Instance.PlayParticles(tankController.tankView.transform, Particles.TankExplosion, 2);
         }
     }
 
     public void HandleCollisions(Collision collision)
     {
-        //if (collision.gameObject.GetComponent<BulletView>() != null)
-        //{
-        //    TakeDamage(TankService.Instance.GetBulletDamage());
-        //    GameObject.Destroy(collision.gameObject);
-        //}
+        if (collision.gameObject.GetComponent<BulletView>() != null)
+        {
+            TakeDamage(TankService.Instance.GetBulletDamage());
+        }
         if (collision.gameObject.GetComponent<EnemyTankView>() != null)
         {
             TakeDamage(TankService.Instance.GetEnemyTankDamage());

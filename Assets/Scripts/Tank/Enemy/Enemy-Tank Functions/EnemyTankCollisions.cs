@@ -14,6 +14,7 @@ public class EnemyTankCollisions
         if (enemyTankController.health <= 0)
         {
             GameObject.Destroy(enemyTankController.enemyTankView.gameObject);
+            ParticleSystems.Instance.PlayParticles(enemyTankController.enemyTankView.transform, Particles.TankExplosion, 2);
         }
     }
 
@@ -33,7 +34,6 @@ public class EnemyTankCollisions
             {
                 TakeDamage(EnemyTankService.Instance.GetBulletDaamge());
             }
-            GameObject.Destroy(collision.gameObject);
         }
         else if (collision.gameObject.GetComponent<TankView>() != null)
         {
