@@ -14,6 +14,7 @@ public class TankCollisions
         {
             GameObject.Destroy(tankController.tankView.gameObject);
             ParticleSystems.Instance.PlayParticles(tankController.tankView.transform, Particles.TankExplosion, 2);
+            levelmanager.Instance.DestroyEverythingCoroutine();
         }
     }
 

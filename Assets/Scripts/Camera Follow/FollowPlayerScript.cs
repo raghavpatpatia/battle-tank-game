@@ -11,6 +11,7 @@ public class FollowPlayerScript
         
     public void FollowPlayer(TankView tankView)
     {
+        cam.m_Lens.OrthographicSize = 10;
         cam.Follow = tankView.transform;
         cam.LookAt = tankView.transform;
     }
