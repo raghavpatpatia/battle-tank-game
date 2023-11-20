@@ -8,16 +8,13 @@ public class BulletCollisions
         this.bulletController = bulletController;
     }
 
-    public void DestroyBulletOnCollision()
+    public void CollisionCheck(Collision collision)
     {
-        if (bulletController.bulletView != null)
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            GameObject.Destroy(bulletController.bulletView.gameObject, 3f);
+            damageable.TakeDamage(bulletController.GetBulletDamage());
         }
-    }
-
-    public void GroundCollisionCheck(Collision collision)
-    {
         GameObject.Destroy(bulletController.bulletView.gameObject);
         ParticleSystems.Instance.PlayParticles(bulletController.bulletView.transform, Particles.BulletDestruction, 2);
     }

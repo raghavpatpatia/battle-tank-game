@@ -9,18 +9,9 @@ public class BulletService : GenericSingleton<BulletService>
     {
         base.Awake();
     }
+
     public void FireBullet(BulletType bulletType, Transform transform)
     {
         bulletController = new BulletController(bulletList.bulletList[(int)bulletType - 1], transform);
-    }
-
-    public int GetDamage()
-    {
-        return bulletController.GetBulletDamage();
-    }
-
-    public void DestroyBullet()
-    {
-        bulletController.DestroyBulletOnCollision();
     }
 }

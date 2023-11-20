@@ -24,13 +24,9 @@ public class BulletController
     {
         bulletMovement.MoveBullet();
     }
-    public void DestroyBulletOnCollision()
+    public void CollisionCheck(Collision collision)
     {
-        bulletCollisions.DestroyBulletOnCollision();
-    }
-    public void GroundCollisionCheck(Collision collision)
-    {
-        bulletCollisions.GroundCollisionCheck(collision);
+        bulletCollisions.CollisionCheck(collision);
     }
     public int GetBulletDamage()
     {

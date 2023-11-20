@@ -19,6 +19,6 @@ public class BulletView : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        bulletController.GroundCollisionCheck(collision);
+        bulletController.CollisionCheck(collision);
     }
 }

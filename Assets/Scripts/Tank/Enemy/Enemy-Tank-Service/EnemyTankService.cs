@@ -29,24 +29,9 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
         enemyTankViewList.Add(enemyTankController.enemyTankView);
     }
 
-    public int GetBulletDaamge()
-    {
-        return BulletService.Instance.GetDamage();
-    }
-
     public void Shoot(BulletType bulletType, Transform position)
     {
         BulletService.Instance.FireBullet(bulletType, position);
-    }
-
-    public int GetEnemyTankDamage()
-    {
-        return enemyTankController.enemyTankDamage;
-    }
-
-    public int GetTankDamage()
-    {
-        return TankService.Instance.GetTankDamage();
     }
 
     public IEnumerator DestroyAllEnemies()
@@ -67,9 +52,8 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
                 Destroy(enemyTank.gameObject);
                 ParticleSystems.Instance.PlayParticles(enemyTank.transform, Particles.TankExplosion, 2f);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
-
         yield return new WaitForSeconds(2f);
     }
 

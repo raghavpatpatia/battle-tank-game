@@ -7,7 +7,7 @@ public class TankCollisions
     {
         this.tankController = tankController;
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         tankController.health -= damage;
         if (tankController.health <= 0)
@@ -20,13 +20,10 @@ public class TankCollisions
 
     public void HandleCollisions(Collision collision)
     {
-        if (collision.gameObject.GetComponent<BulletView>() != null)
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            TakeDamage(TankService.Instance.GetBulletDamage());
-        }
-        if (collision.gameObject.GetComponent<EnemyTankView>() != null)
-        {
-            TakeDamage(TankService.Instance.GetEnemyTankDamage());
+            damageable.TakeDamage(tankController.tankDamage);
         }
     }
 }

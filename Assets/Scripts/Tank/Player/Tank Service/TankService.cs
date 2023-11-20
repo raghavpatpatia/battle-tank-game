@@ -30,19 +30,4 @@ public class TankService : GenericSingleton<TankService>
     {
         BulletService.Instance.FireBullet(bulletType, position);
     }
-
-    public int GetBulletDamage()
-    {
-        return BulletService.Instance.GetDamage();
-    }
-
-    public int GetTankDamage()
-    {
-        return tankController.tankDamage;
-    }
-
-    public int GetEnemyTankDamage()
-    {
-        return EnemyTankService.Instance.GetEnemyTankDamage();
-    }
 }

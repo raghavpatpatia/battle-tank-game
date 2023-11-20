@@ -20,24 +20,10 @@ public class EnemyTankCollisions
 
     public void HandleCollisions(Collision collision)
     {
-        if (collision.gameObject.GetComponent<BulletView>() != null)
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            if (enemyTankController.enemyTankModel.enemyTankType == EnemyTanks.FullMoonTank)
-            {
-                TakeDamage(2 * EnemyTankService.Instance.GetBulletDaamge());
-            }
-            if (enemyTankController.enemyTankModel.enemyTankType == EnemyTanks.DarkKnightTank)
-            {
-                TakeDamage(0.5f * EnemyTankService.Instance.GetBulletDaamge());
-            }
-            if (enemyTankController.enemyTankModel.enemyTankType == EnemyTanks.NightSkyTank)
-            {
-                TakeDamage(EnemyTankService.Instance.GetBulletDaamge());
-            }
-        }
-        else if (collision.gameObject.GetComponent<TankView>() != null)
-        {
-            TakeDamage(EnemyTankService.Instance.GetTankDamage());
+            damageable.TakeDamage(enemyTankController.enemyTankDamage);
         }
     }
 }

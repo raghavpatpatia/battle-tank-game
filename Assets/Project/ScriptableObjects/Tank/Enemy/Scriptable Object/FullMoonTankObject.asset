@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 70
   tankDamage: 5
-  health: 70
+  health: 50
   enemyTankType: 2
   bulletType: 1
   tankType: 2

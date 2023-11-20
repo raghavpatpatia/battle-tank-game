@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyTankView : MonoBehaviour
+public class EnemyTankView : MonoBehaviour, IDamageable
 {
     public EnemyTankController enemyTankController { get; private set; }
     [SerializeField] private Rigidbody rb;
@@ -25,5 +25,9 @@ public class EnemyTankView : MonoBehaviour
         {
             enemyTankController.HandleCollisions(collision);
         }
+    }
+    public void TakeDamage(float damage)
+    {
+        enemyTankController.TakeDamage(damage);
     }
 }
