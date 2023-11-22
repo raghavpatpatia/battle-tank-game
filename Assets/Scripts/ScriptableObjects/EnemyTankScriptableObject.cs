@@ -10,10 +10,8 @@ public class EnemyTankScriptableObjectList : ScriptableObject
 public class EnemyTankScriptableObject : ScriptableObject
 {
     public float moveSpeed;
-    public int tankDamage;
     public float health;
     public EnemyTanks enemyTankType;
     public BulletType bulletType;
-    public TankType tankType;
     public EnemyTankView enemyTankView;
 }

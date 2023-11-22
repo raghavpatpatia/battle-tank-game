@@ -7,7 +7,7 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
     public EnemyTankController enemyTankController { get; private set; }
     [SerializeField] private int enemyCount;
     [SerializeField] private EnemyTankScriptableObjectList enemyTankObject;
-    public List<EnemyTankView> enemyTankViewList = new List<EnemyTankView>();
+    private List<EnemyTankView> enemyTankViewList = new List<EnemyTankView>();
     protected override void Awake()
     {
         base.Awake();
@@ -32,6 +32,11 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
     public void Shoot(BulletType bulletType, Transform position)
     {
         BulletService.Instance.FireBullet(bulletType, position);
+    }
+
+    public Transform GetPlayerTransform()
+    {
+        return TankService.Instance.GetPlayerTransform();
     }
 
     public IEnumerator DestroyAllEnemies()

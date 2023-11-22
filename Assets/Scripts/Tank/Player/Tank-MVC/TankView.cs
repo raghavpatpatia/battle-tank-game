@@ -13,7 +13,7 @@ public class TankView : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (tankController != null && tankController.tankType == TankType.Player)
+        if (tankController != null)
         {
             TankMovement();
             if (Input.GetKeyDown(KeyCode.Space))
@@ -36,14 +36,6 @@ public class TankView : MonoBehaviour, IDamageable
     public Rigidbody GetRigidbody()
     {
         return rb;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (tankController != null)
-        {
-            tankController.HandleCollisions(collision);
-        }
     }
 
     public void TakeDamage(float damage)

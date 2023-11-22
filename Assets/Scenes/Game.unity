@@ -123,7 +123,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 794ed16dbe6f4d24fb57bc75f79fac3c, type: 2}
 --- !u!1 &31872182 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5184290148501065876, guid: 0aac6aef14f064c3fb626270cff2683b,
@@ -361,7 +361,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCount: 6
   enemyTankObject: {fileID: 11400000, guid: 22f09437090835f4aad90d5f8c7f675a, type: 2}
-  enemyTankViewList: []
 --- !u!4 &600390651
 Transform:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73022a0af175e74bb6d4003fb343ec3, type: 3}
   m_Name: NightSkyTankObject
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  moveSpeed: 70
   tankDamage: 10
   health: 90
   enemyTankType: 1

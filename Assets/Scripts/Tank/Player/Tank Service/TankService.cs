@@ -30,4 +30,9 @@ public class TankService : GenericSingleton<TankService>
     {
         BulletService.Instance.FireBullet(bulletType, position);
     }
+
+    public Transform GetPlayerTransform()
+    {
+        return tankController.GetTransform();
+    }
 }

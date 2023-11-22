@@ -8,11 +8,9 @@ public class TankController
     public Rigidbody rb { get; private set; }
     public Joystick joystick { get; private set; }
     public float health { get; set; }
-    public int tankDamage { get; private set; }
-    public TankType tankType { get; private set; }
     private FollowPlayerScript followPlayer;
     private TankMovement tankMovement;
-    private TankCollisions tankCollisions;
+    private TankCollisionDamage tankCollisionDamage;
 
     public TankController(TankScriptableObject tank, Joystick joystick, FollowPlayerScript followPlayer, Transform SpawnPoint)
     {
@@ -25,15 +23,13 @@ public class TankController
         tankModel.SetTankController(this);
 
         this.tankMovement = new TankMovement(this);
-        this.tankCollisions = new TankCollisions(this);
+        this.tankCollisionDamage = new TankCollisionDamage(this);
 
         rb = tankView.GetRigidbody();
 
         this.joystick = joystick;
 
         health = tankModel.health;
-        tankDamage = tankModel.tankDamage;
-        tankType = tankModel.tankType;
     }
 
 
@@ -44,17 +40,16 @@ public class TankController
     
     public void TakeDamage(float damage)
     {
-        tankCollisions.TakeDamage(damage);
+        tankCollisionDamage.TakeDamage(damage);
     }
-
-    public void HandleCollisions(Collision collision)
-    {
-        tankCollisions.HandleCollisions(collision);
-    }
-
     public void Shoot(Transform bulletSpawnPoint)
     {
         TankService.Instance.Shoot(tankModel.bulletType, bulletSpawnPoint);
+    }
+
+    public Transform GetTransform()
+    {
+        return rb.transform;
     }
 
 }
