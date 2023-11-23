@@ -56,19 +56,13 @@ public class EnemyTankState
 
     protected void CheckPlayerStuck(float stuckDuration)
     {
-        float stuckDurationStartTime = stuckDuration;
-        if (Mathf.Approximately(navMeshAgent.velocity.sqrMagnitude, 0.0f))
-        {
-            stuckDuration -= Time.deltaTime;
+        Vector3 previousPlayerPosition = playerTransform.position;
+        stuckDuration -= Time.deltaTime;
 
-            if (stuckDuration <= 0.0f)
-            {
-                enemyTankController.ChangeState(EnemyStates.Idle);
-            }
-        }
-        else
+        if (stuckDuration <= 0.0f)
         {
-            stuckDuration = stuckDurationStartTime;
+            enemyTankController.ChangeState(EnemyStates.Idle);
         }
+        previousPlayerPosition = playerTransform.position;
     }
 }

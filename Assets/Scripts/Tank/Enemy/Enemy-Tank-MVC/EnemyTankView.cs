@@ -34,9 +34,8 @@ public class EnemyTankView : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (enemyTankController != null)
+        if (enemyTankController != null && enemyTankController.playerTransform != null)
         {
-            // enemyTankController.EnemyTankMovement();
             enemyTankController.UpdateEnemyTankState();
         }
     }
