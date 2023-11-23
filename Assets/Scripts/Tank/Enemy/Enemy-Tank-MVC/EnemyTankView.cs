@@ -18,6 +18,10 @@ public class EnemyTankView : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
     }
+    private void Start()
+    {
+        enemyTankController.ChangeState(EnemyStates.Idle);
+    }
     public Rigidbody GetRigidbody()
     {
         return rb;
@@ -32,7 +36,8 @@ public class EnemyTankView : MonoBehaviour, IDamageable
     {
         if (enemyTankController != null)
         {
-            enemyTankController.EnemyTankMovement();
+            // enemyTankController.EnemyTankMovement();
+            enemyTankController.UpdateEnemyTankState();
         }
     }
     public void TakeDamage(float damage)

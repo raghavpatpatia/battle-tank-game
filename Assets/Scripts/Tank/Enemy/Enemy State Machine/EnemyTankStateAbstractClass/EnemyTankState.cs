@@ -7,7 +7,17 @@ public class EnemyTankState
     protected Rigidbody rb;
     protected NavMeshAgent navMeshAgent;
     protected Transform playerTransform;
+    protected float playerDistance;
     protected EnemyStates state;
+    private bool isActive = false;
+    public bool IsActive
+    {
+        get { return isActive; }
+    }
+    public EnemyStates EnemyState
+    {
+        get { return state; }
+    }
 
     public EnemyTankState(EnemyTankController enemyTankController)
     {
@@ -15,9 +25,50 @@ public class EnemyTankState
         rb = enemyTankController.rb;
         playerTransform = enemyTankController.playerTransform;
         navMeshAgent = enemyTankController.agent;
+        navMeshAgent.speed = enemyTankController.enemyTankModel.moveSpeed;
     }
 
-    public virtual void OnStateEnter() { }
-    public virtual void OnStateExit() { }
-    public virtual void Tick() { }
+    public virtual void OnStateEnter() 
+    {
+        isActive = true;
+        UpdatedPlayerDistance();
+    }
+    public virtual void Tick() 
+    {
+        if (playerTransform == null)
+        {
+            navMeshAgent.ResetPath();
+            rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            UpdatedPlayerDistance();
+        }
+    }
+    public virtual void OnStateExit() 
+    {
+        isActive = false;
+    }
+    private void UpdatedPlayerDistance()
+    {
+        this.playerDistance = Vector3.Distance(playerTransform.position, rb.transform.position);
+    }
+
+    protected void CheckPlayerStuck(float stuckDuration)
+    {
+        float stuckDurationStartTime = stuckDuration;
+        if (Mathf.Approximately(navMeshAgent.velocity.sqrMagnitude, 0.0f))
+        {
+            stuckDuration -= Time.deltaTime;
+
+            if (stuckDuration <= 0.0f)
+            {
+                enemyTankController.ChangeState(EnemyStates.Idle);
+            }
+        }
+        else
+        {
+            stuckDuration = stuckDurationStartTime;
+        }
+    }
 }

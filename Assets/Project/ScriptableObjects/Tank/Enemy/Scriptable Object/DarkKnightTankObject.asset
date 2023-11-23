@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73022a0af175e74bb6d4003fb343ec3, type: 3}
   m_Name: DarkKnightTankObject
   m_EditorClassIdentifier: 
-  moveSpeed: 50
-  tankDamage: 5
+  moveSpeed: 4
+  rotationSpeed: 4
   health: 80
+  enemyBPM: 10
+  minimumPlayerDistanceToAttack: 7
+  minimumPlayerDistanceToChase: 15
   enemyTankType: 3
   bulletType: 1
-  tankType: 2
   enemyTankView: {fileID: 2603541905093228600, guid: f5883795dc88a6f45add6ded24c9dc9f,
     type: 3}

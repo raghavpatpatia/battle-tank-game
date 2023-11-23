@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73022a0af175e74bb6d4003fb343ec3, type: 3}
   m_Name: FullMoonTankObject
   m_EditorClassIdentifier: 
-  moveSpeed: 30
-  tankDamage: 5
+  moveSpeed: 3
+  rotationSpeed: 3
   health: 50
+  enemyBPM: 5
+  minimumPlayerDistanceToAttack: 5
+  minimumPlayerDistanceToChase: 10
   enemyTankType: 2
   bulletType: 1
-  tankType: 2
   enemyTankView: {fileID: 4140741587736565358, guid: a8de703f2b61c4e48a1fd4c5f1c83341,
     type: 3}
