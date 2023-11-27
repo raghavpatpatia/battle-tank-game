@@ -17,6 +17,10 @@ public class TankService : GenericSingleton<TankService>
     private void Start()
     {
         PlayerTank(Random.Range(0, tankObject.tankList.Length));
+        if (Events.Instance != null)
+        {
+            Events.Instance.ShootBullet += Shoot;
+        }
     }
 
     public void PlayerTank(int index)
@@ -26,13 +30,21 @@ public class TankService : GenericSingleton<TankService>
         tankController = new TankController(tank, joystick, followPlayer, spawnPoint);
     }
 
-    public void Shoot(BulletType bulletType, Transform position)
+    public void Shoot()
     {
-        BulletService.Instance.FireBullet(bulletType, position);
+        if (tankController.rb != null)
+        {
+            BulletService.Instance.FireBullet(tankController.tankModel.bulletType, tankController.tankView.BulletSpawnPoint);
+        }
     }
 
     public Transform GetPlayerTransform()
     {
         return tankController.GetTransform();
+    }
+
+    private void OnDisable()
+    {
+        Events.Instance.ShootBullet -= Shoot;
     }
 }
