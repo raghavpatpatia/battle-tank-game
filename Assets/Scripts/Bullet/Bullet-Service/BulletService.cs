@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 
-public class BulletService : GenericSingleton<BulletService>
+public class BulletService : NonMonoGenericSingleton<BulletService>
 {
-    [SerializeField] private BulletScriptableObjectList bulletList;
+    private BulletScriptableObjectList bulletList;
     private BulletController bulletController;
 
-    protected override void Awake()
+    public BulletService() : base()
     {
-        base.Awake();
+        base.Initialize();
+    }
+
+    public void Initialization()
+    {
+        bulletList = GameManager.Instance.bulletList;
     }
 
     public void FireBullet(BulletType bulletType, Transform transform)

@@ -1,22 +1,29 @@
 using Cinemachine;
 using UnityEngine;
 
-public class TankService : GenericSingleton<TankService>
+public class TankService : NonMonoGenericSingleton<TankService>
 {
-    [SerializeField] TankScriptableObjectList tankObject;
-    [SerializeField] private Joystick joystick;
-    [SerializeField] private CinemachineVirtualCamera cam;
-    [SerializeField] private Transform spawnPoint;
+    private TankScriptableObjectList tankObject;
+    private Joystick joystick;
+    private CinemachineVirtualCamera cam;
+    private Transform spawnPoint;
     public TankController tankController { get; private set; }
 
-    protected override void Awake()
+    public TankService() : base()
     {
-        base.Awake();
+        base.Initialize();
+    }
+    public void Initialization()
+    {
+        tankObject = GameManager.Instance.tankObject;
+        cam = GameManager.Instance.cam;
+        joystick = GameManager.Instance.joystick;
+        spawnPoint = GameManager.Instance.spawnPoint;
+        PlayerTank(Random.Range(0, tankObject.tankList.Length));
     }
 
-    private void Start()
+    public void Subscribe()
     {
-        PlayerTank(Random.Range(0, tankObject.tankList.Length));
         if (Events.Instance != null)
         {
             Events.Instance.ShootBullet += Shoot;
@@ -43,7 +50,7 @@ public class TankService : GenericSingleton<TankService>
         return tankController.GetTransform();
     }
 
-    private void OnDisable()
+    public void Unsubscribe()
     {
         Events.Instance.ShootBullet -= Shoot;
     }

@@ -1,14 +1,10 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class AchievementSystemUI : GenericSingleton<AchievementSystemUI>
+public class AchievementSystemUI : MonoBehaviour
 {
     private Animator animator;
     private TextMeshProUGUI text;
-    protected override void Awake()
-    {
-        base.Awake();
-    }
 
     private void Start()
     {

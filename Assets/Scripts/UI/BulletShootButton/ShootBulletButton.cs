@@ -5,11 +5,9 @@ using UnityEngine.UI;
 public class ShootBulletButton : MonoBehaviour
 {
     private Button button;
-    private Events events;
 
     private void Start()
     {
-        events = new Events();
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
     }
@@ -17,5 +15,6 @@ public class ShootBulletButton : MonoBehaviour
     private void OnButtonClick()
     {
         Events.Instance.InvokeShootBullet();
+        Events.Instance.InvokeBulletsFired(AchievementSystem.Instance.bulletsFired + 1);
     }
 }
