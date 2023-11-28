@@ -1,20 +1,25 @@
 using System.Collections.Generic;
-using System.Linq;
 
-public class AchievementSystem : NonMonoGenericSingleton<AchievementSystem>
+public interface Observer
+{
+    void ShowAchievements();
+}
+
+public class AchievementSystem : NonMonoGenericSingleton<AchievementSystem>, Observer
 {
     public int bulletsFired;
     public int totalEnemiesKilled;
     public Achievements[] achievements;
     private AchievementSystemUI achievementSystemUI;
     private List<Achievements> achievementAchieved = new List<Achievements>();
-    public AchievementSystem() : base() 
+
+    public AchievementSystem() : base()
     {
         base.Initialize();
         Initialization();
         Subscribe();
-    }                 
-    
+    }
+
     public void Initialization()
     {
         achievementSystemUI = GameManager.Instance.achievementSystemUI;
@@ -26,6 +31,7 @@ public class AchievementSystem : NonMonoGenericSingleton<AchievementSystem>
         Events.Instance.BulletsFired += RecordBulletsFired;
         Events.Instance.EnemiesKilled += RecordEnemiesKilled;
     }
+
     public void RecordBulletsFired(int bullets)
     {
         bulletsFired = bullets;
@@ -44,10 +50,10 @@ public class AchievementSystem : NonMonoGenericSingleton<AchievementSystem>
         {
             achievementSystemUI.UpdateText(avhievementText);
             achievementAchieved.Add(unlockedAchievement);
-        }    
+        }
     }
 
-    private void ShowAchievements()
+    public void ShowAchievements()
     {
         foreach (Achievements achievement in achievements)
         {
@@ -55,7 +61,7 @@ public class AchievementSystem : NonMonoGenericSingleton<AchievementSystem>
             {
                 if (achievement.totalNumber == bulletsFired)
                 {
-                    string achievementText = "Achievement Unocked: You have fired " + achievement.totalNumber + " bullets.";
+                    string achievementText = "Achievement Unlocked: You have fired " + achievement.totalNumber + " bullets.";
                     AchievementUnlocked(achievementText, achievement);
                 }
             }
@@ -63,7 +69,7 @@ public class AchievementSystem : NonMonoGenericSingleton<AchievementSystem>
             {
                 if (achievement.totalNumber == totalEnemiesKilled)
                 {
-                    string achievementText = "Achievement Unocked: You have killed " + achievement.totalNumber + " enemies.";
+                    string achievementText = "Achievement Unlocked: You have killed " + achievement.totalNumber + " enemies.";
                     AchievementUnlocked(achievementText, achievement);
                 }
             }
