@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73022a0af175e74bb6d4003fb343ec3, type: 3}
+  m_Name: NightSkyTankObject
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rotationSpeed: 5
+  health: 90
+  enemyBPM: 15
+  minimumPlayerDistanceToAttack: 10
+  minimumPlayerDistanceToChase: 11
+  enemyTankType: 1
+  bulletType: 2
+  enemyTankView: {fileID: -4050823346782893514, guid: 2a6e8c2687d1c42449b2516d1810ae13,
+    type: 3}
