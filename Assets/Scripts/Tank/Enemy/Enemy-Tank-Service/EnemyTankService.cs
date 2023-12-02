@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTankService : GenericSingleton<EnemyTankService>
+public class EnemyTankService : NonMonoGenericSingleton<EnemyTankService>
 {
     public EnemyTankController enemyTankController { get; private set; }
-    [SerializeField] private int enemyCount;
-    [SerializeField] private EnemyTankScriptableObjectList enemyTankObject;
+    private int enemyCount;
+    private EnemyTankScriptableObjectList enemyTankObject;
     private List<EnemyTankView> enemyTankViewList = new List<EnemyTankView>();
-    protected override void Awake()
+
+    public EnemyTankService() : base()
     {
-        base.Awake();
+        base.Initialize();
     }
 
-    private void Start()
+    public void Initialization()
+    {
+        enemyCount = GameManager.Instance.enemyCount;
+        enemyTankObject = GameManager.Instance.enemyTankObject;
+    }
+
+    public void SpawnNEnemies()
     {
         for (int i = 0; i < enemyCount; i++)
         {
@@ -54,7 +61,7 @@ public class EnemyTankService : GenericSingleton<EnemyTankService>
         {
             if (enemyTank != null)
             {
-                Destroy(enemyTank.gameObject);
+                GameObject.Destroy(enemyTank.gameObject);
                 ParticleSystems.Instance.PlayParticles(enemyTank.transform, Particles.TankExplosion, 2f);
             }
             yield return new WaitForSeconds(2f);
