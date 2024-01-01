@@ -23,6 +23,7 @@ public class GameManager : GenericSingleton<GameManager>
     private EnemyTankService enemyTankService;
     private BulletService bulletService;
     private AchievementSystem achievementSystem;
+    private SimpleBulletObjectPool bulletObjectPool;
 
     protected override void Awake()
     {
@@ -32,6 +33,7 @@ public class GameManager : GenericSingleton<GameManager>
         enemyTankService = new EnemyTankService();
         bulletService = new BulletService();
         achievementSystem = new AchievementSystem();
+        bulletObjectPool = new SimpleBulletObjectPool();
         Initializations();
     }
 

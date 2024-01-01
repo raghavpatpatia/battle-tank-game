@@ -9,10 +9,10 @@ public class BulletController
     private BulletMovement bulletMovement;
     private BulletCollisions bulletCollisions;
 
-    public BulletController(BulletScriptableObject bullet, Transform transform)
+    public BulletController(BulletScriptableObject bullet, BulletType type)
     {
-        this.bulletView = GameObject.Instantiate<BulletView>(bullet.bulletView, transform.position, transform.rotation);
-        this.bulletModel = new BulletModel(bullet);
+        this.bulletView = GameObject.Instantiate<BulletView>(bullet.bulletView, BulletService.Instance.transform.position, Quaternion.identity);
+        this.bulletModel = new BulletModel(bullet, type);
         this.bulletView.SetBulletController(this);
         this.bulletModel.SetBulletController(this);
         this.bulletMovement = new BulletMovement(this);
@@ -33,4 +33,18 @@ public class BulletController
         return bulletModel.damage;
     }
 
+    public void EnableBullet(Transform transform)
+    {
+        rb.transform.position = transform.position;
+        rb.transform.rotation = transform.rotation;
+        rb.gameObject.SetActive(true);
+        MoveBullet();
+    }
+    public void DisableBullet()
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.rotation = Quaternion.identity;
+        rb.gameObject.SetActive(false);
+    }
 }
