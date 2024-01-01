@@ -15,9 +15,9 @@ MonoBehaviour:
   moveSpeed: 3
   rotationSpeed: 3
   health: 50
-  enemyBPM: 5
-  minimumPlayerDistanceToAttack: 5
-  minimumPlayerDistanceToChase: 6
+  enemyBPM: 20
+  minimumPlayerDistanceToAttack: 7
+  minimumPlayerDistanceToChase: 7
   enemyTankType: 2
   bulletType: 1
   enemyTankView: {fileID: 4140741587736565358, guid: a8de703f2b61c4e48a1fd4c5f1c83341,

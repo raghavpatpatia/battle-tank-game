@@ -14,6 +14,7 @@ public class EnemyTankCollisionDamage
         if (enemyTankController.health <= 0)
         {
             GameObject.Destroy(enemyTankController.enemyTankView.gameObject);
+            Events.Instance.InvokeEnemiesKilled(AchievementSystem.Instance.totalEnemiesKilled + 1);
             ParticleSystems.Instance.PlayParticles(enemyTankController.enemyTankView.transform, Particles.TankExplosion, 2);
         }
     }

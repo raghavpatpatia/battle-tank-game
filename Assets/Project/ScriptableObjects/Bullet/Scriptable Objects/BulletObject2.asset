@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc15bbcb8add9904982b1006ab6790a3, type: 3}
   m_Name: BulletObject2
   m_EditorClassIdentifier: 
-  range: 1000
+  range: 20
   damage: 15
   bulletView: {fileID: -3604618980095496720, guid: aff7dacf8f5e46a438bbb446d4a6a4e1,
     type: 3}
