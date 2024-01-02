@@ -5,6 +5,7 @@ public class TankView : MonoBehaviour, IDamageable
     private TankController tankController;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] public HealthBar healthBar;
     public Transform BulletSpawnPoint { get { return bulletSpawnPoint; } }
 
     private void Awake()

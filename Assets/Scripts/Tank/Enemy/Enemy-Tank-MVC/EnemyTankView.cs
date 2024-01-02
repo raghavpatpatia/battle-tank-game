@@ -7,6 +7,7 @@ public class EnemyTankView : MonoBehaviour, IDamageable
     public NavMeshAgent agent { get; private set; }
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] public HealthBar healthBar;
     private EnemyTankState enemyTankState;
     public void SetEnemyTankController(EnemyTankController enemyTankController)
     {

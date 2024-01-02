@@ -8,6 +8,7 @@ public class TankController
     public Rigidbody rb { get; private set; }
     public Joystick joystick { get; private set; }
     public float health { get; set; }
+    public float defaultHealth { get; private set; }
     private FollowPlayerScript followPlayer;
     private TankMovement tankMovement;
     private TankCollisionDamage tankCollisionDamage;
@@ -30,6 +31,7 @@ public class TankController
         this.joystick = joystick;
 
         health = tankModel.health;
+        defaultHealth = tankModel.health;
     }
 
 
