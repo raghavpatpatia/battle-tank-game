@@ -13,7 +13,7 @@ public class BulletMovement
     {
         if (bulletController.rb != null)
         {
-            bulletController.rb.AddForce(bulletController.rb.transform.forward * bulletController.bulletModel.range * Time.deltaTime, ForceMode.Impulse);
+            bulletController.rb.AddForce(bulletController.rb.transform.forward * bulletController.bulletModel.range, ForceMode.Impulse);
         }
     }
 }

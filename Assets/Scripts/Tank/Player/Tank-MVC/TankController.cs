@@ -42,10 +42,6 @@ public class TankController
     {
         tankCollisionDamage.TakeDamage(damage);
     }
-    public void Shoot(Transform bulletSpawnPoint)
-    {
-        TankService.Instance.Shoot(tankModel.bulletType, bulletSpawnPoint);
-    }
 
     public Transform GetTransform()
     {

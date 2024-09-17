@@ -12,11 +12,6 @@ public class BulletView : MonoBehaviour
     {
         return rb;
     }
-    private void Start()
-    {
-        bulletController.MoveBullet();
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         bulletController.CollisionCheck(collision);

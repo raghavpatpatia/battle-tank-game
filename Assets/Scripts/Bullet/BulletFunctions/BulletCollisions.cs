@@ -15,7 +15,7 @@ public class BulletCollisions
         {
             damageable.TakeDamage(bulletController.GetBulletDamage());
         }
-        GameObject.Destroy(bulletController.bulletView.gameObject);
+        BulletService.Instance.BulletCollision(bulletController, bulletController.bulletModel.type);
         ParticleSystems.Instance.PlayParticles(bulletController.bulletView.transform, Particles.BulletDestruction, 2);
     }
 }
