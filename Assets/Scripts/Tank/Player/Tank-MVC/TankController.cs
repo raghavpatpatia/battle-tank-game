@@ -8,6 +8,7 @@ public class TankController
     public Rigidbody rb { get; private set; }
     public Joystick joystick { get; private set; }
     public float health { get; set; }
+    public float defaultHealth { get; private set; }
     private FollowPlayerScript followPlayer;
     private TankMovement tankMovement;
     private TankCollisionDamage tankCollisionDamage;
@@ -30,6 +31,7 @@ public class TankController
         this.joystick = joystick;
 
         health = tankModel.health;
+        defaultHealth = tankModel.health;
     }
 
 
@@ -41,10 +43,6 @@ public class TankController
     public void TakeDamage(float damage)
     {
         tankCollisionDamage.TakeDamage(damage);
-    }
-    public void Shoot(Transform bulletSpawnPoint)
-    {
-        TankService.Instance.Shoot(tankModel.bulletType, bulletSpawnPoint);
     }
 
     public Transform GetTransform()

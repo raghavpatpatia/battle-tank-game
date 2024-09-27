@@ -4,7 +4,9 @@ public class TankView : MonoBehaviour, IDamageable
 {
     private TankController tankController;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] public Transform bulletSpawnPoint;
+    [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] public HealthBar healthBar;
+    public Transform BulletSpawnPoint { get { return bulletSpawnPoint; } }
 
     private void Awake()
     {
@@ -16,10 +18,6 @@ public class TankView : MonoBehaviour, IDamageable
         if (tankController != null)
         {
             TankMovement();
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                tankController.Shoot(bulletSpawnPoint);
-            }
         }
     }
 

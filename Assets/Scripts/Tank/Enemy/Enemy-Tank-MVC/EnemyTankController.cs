@@ -9,6 +9,7 @@ public class EnemyTankController
     public Rigidbody rb { get; private set; }
     public NavMeshAgent agent { get; private set; }
     public float health { get; set; }
+    public float defaultHealth { get; private set; }
     public float playerAttackDistance { get; private set; }
     public float playerChaseDistance { get; private set; }
     private EnemyTankCollisionDamage enemyTankColliionDamage;
@@ -23,6 +24,7 @@ public class EnemyTankController
         this.enemyTankView.SetEnemyTankController(this);
         this.enemyTankColliionDamage = new EnemyTankCollisionDamage(this);
         this.health = enemyTankModel.health;
+        this.defaultHealth = enemyTankModel.health;
         this.playerAttackDistance = enemyTankModel.minimumPlayerDistanceToAttack;
         this.playerChaseDistance = enemyTankModel.minimumPlayerDistanceToChase;
         this.rb = enemyTankView.GetRigidbody();

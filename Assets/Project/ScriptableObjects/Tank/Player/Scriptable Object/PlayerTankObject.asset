@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e365767d1ef7243a1fbfa5f2828548, type: 3}
   m_Name: PlayerTankObject
   m_EditorClassIdentifier: 
-  moveSpeed: 200
+  moveSpeed: 100
   maxRotation: 360
   health: 100
-  tankDamage: 15
   bulletType: 2
-  tankType: 1
   tankView: {fileID: 1910266860361482849, guid: 06eebbf429bdfa64fb293cb109d956b3,
     type: 3}
